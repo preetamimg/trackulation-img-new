@@ -2192,7 +2192,7 @@
                                 knowledge: window.dataLayer && p,
                                 domain: o
                             }));
-                            a.push(o + "/collect?" + h)
+                            a.push(o + "/api/collect?" + h)
                         }
                     }
                     return this.payload = {}, a
