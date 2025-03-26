@@ -30,16 +30,16 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
         }
 
         // Parse incoming request data
-        const body: { url?: string; referrer?: string; screen_resolution?: string } = await req.json();
+        const { searchParams } = new URL(req.url);
         const trackingData: TrackingData = {
             event: "page_view",
             user_id: userId,
-            url: body.url || "",
-            referrer: body.referrer || "",
+            url: searchParams.get("entry_url") || "",
+            referrer: searchParams.get("page_referrer") || "",
             user_agent: req.headers.get("user-agent") || "",
             ip_address: req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "",
             timestamp: Date.now(),
-            screen_resolution: body.screen_resolution || "",
+            screen_resolution: searchParams.get("screen_resolution") || "",
         };
 
         return NextResponse.json({ success: true, message: "Tracking successful", user_id: userId, data: JSON.stringify(trackingData) });
