@@ -12,7 +12,7 @@ type TrackingData = {
     screen_resolution: string;
 };
 
-export async function POST(req: NextRequest): Promise<NextResponse> {
+export async function GET(req: NextRequest): Promise<NextResponse> {
     try {
         const cookieStore = await cookies();
         let userId: string | undefined = (await cookieStore).get("user_id")?.value;
