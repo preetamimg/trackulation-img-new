@@ -7,12 +7,12 @@
     n.queue = []; t = b.createElement(e); t.async = !0; n.pd = false; n.tools = null;
     t.src = v; s = b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t, s); t.onerror = function () {
-        v = '/js/script-dynamic_old.js';
+        v = 'https://trackulation-img-new.vercel.app/js/script-dynamic.js';
         f._tlq.src = v; t = b.createElement(e); t.async = !0; t.src = v;
         s.parentNode.insertBefore(t, s)
     }
 }(window, document, 'script',
-    '/js/script-dynamic_old.js')
+    'https://trackulation-img-new.vercel.app/js/script-dynamic.js')
 
 tlq('init', 'LS-41417139-3');
 

@@ -1953,7 +1953,7 @@
                     me = n && n.pd;
                     var r = !(n && !1 === n.tools),
                         o = n ? n.version : null,
-                        i = n && n.src ? this.extractHostname(n.src) : "replit.dev";
+                        i = n && n.src ? this.extractHostname(n.src) : "vercel.app";
                     r && this.initTools(), this.setState({
                         visitorHash: e,
                         query: t,
@@ -2110,7 +2110,7 @@
                 key: "extractHostname",
                 value: function(t) {
                     var e;
-                    return ((e = (e = (e = t.indexOf("//") > -1 ? t.split("/")[2] : t.split("/")[0]).split(":")[0]).split("?")[0]).indexOf("replit.dev") > -1 || e.indexOf("tracking_business.com") > -1 ? "https:" : window.location.protocol) + "//" + e
+                    return ((e = (e = (e = t.indexOf("//") > -1 ? t.split("/")[2] : t.split("/")[0]).split(":")[0]).split("?")[0]).indexOf("vercel.app") > -1 || e.indexOf("tracking_business.com") > -1 ? "https:" : window.location.protocol) + "//" + e
                 }
             }, {
                 key: "fire",
