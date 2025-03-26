@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.errorText {
+  margin-top: .25rem;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    --tw-text-opacity: 1;
+    color: rgb(240 68 56 / var(--tw-text-opacity));
+}
+
+.inputError {
+  background-color: rgb(255 251 250)!important;
+  border-color: rgb(253 162 155)!important;
+}
+
+
+.rs-picker-daterange-panel .rs-picker-daterange-calendar-group{
+  @apply h-[20.9375rem]
+}
+.rs-picker-daterange-panel .rs-picker-daterange-calendar-group .rs-calendar {
+  @apply h-[18.75rem]
+}
+
+.rs-calendar-table-header-cell-content {
+  @apply h-10 w-10 flex items-center justify-center text-theme5 font-semibold text-sm
+}
+
+.rs-picker-daterange-panel .rs-picker-daterange-predefined {
+  @apply p-4
+}
+
+.rs-picker-daterange-panel .rs-picker-daterange-predefined .rs-stack-item {
+  @apply w-full
+}
+
+.rs-picker-daterange-panel .rs-picker-daterange-predefined .rs-stack-item button{
+  @apply text-theme5 text-left text-sm font-medium w-full py-2.5 px-4 rounded-md hover:no-underline hover:bg-theme4
+}
+
+.rs-picker-daterange-panel .rs-picker-daterange-content .rs-picker-daterange-calendar-group .rs-calendar-header .rs-calendar-header-month-toolbar .rs-calendar-header-title {
+  @apply text-theme5 text-base font-semibold
+}
+
+.rs-picker-daterange-panel .rs-picker-daterange-content .rs-picker-daterange-calendar-group .rs-calendar-header .rs-calendar-header-month-toolbar .rs-btn-xs {
+  @apply p-[0.3125rem]
+}
+
+.rs-picker-daterange-panel .rs-picker-daterange-content .rs-picker-daterange-calendar-group .rs-calendar-header .rs-calendar-header-month-toolbar .rs-btn-xs svg{
+  @apply text-[1.3rem]
+}
+
+.rs-picker-daterange-panel .rs-picker-daterange-content .rs-picker-daterange-calendar-group .rs-calendar-table-cell-content {
+  @apply size-10 rounded-full flex items-center justify-center
+}
+.rs-picker-daterange-panel .rs-picker-daterange-content .rs-picker-daterange-calendar-group .rs-calendar-table-cell-in-range::before, 
+.rs-picker-daterange-panel .rs-picker-daterange-content .rs-picker-daterange-calendar-group .rs-calendar-table-cell-selected::before {
+  @apply h-[2.5rem] mt-0 bg-theme7
+}
+
+.rs-picker-daterange-panel .rs-calendar-table-cell {
+  @apply text-theme5 text-sm font-medium
+}
+.rs-picker-daterange-panel .rs-calendar-table-cell.rs-calendar-table-cell-un-same-month {
+  @apply text-theme13 text-sm font-medium
+}
+
+.rs-calendar-table-cell-in-range:hover::before {
+  @apply !block 
+}
+
+.rs-picker-daterange-panel .rs-calendar-table-cell-selected.rs-calendar-table-cell-selected-end::before {
+  @apply rounded-e-full
+}
+
+.rs-picker-daterange-panel .rs-calendar-table-cell-selected-start::before {
+  @apply rounded-s-full
+}
+
+.rs-picker-daterange-panel .rs-calendar-table-row .rs-calendar-table-cell-in-range {
+  @apply font-semibold
+}
+
+.rs-picker-daterange-panel .rs-calendar-table-row .rs-calendar-table-cell-in-range:first-child::before {
+  @apply rounded-s-full
+}
+
+.rs-picker-daterange-panel .rs-calendar-table-row .rs-calendar-table-cell-in-range:last-child::before {
+  @apply rounded-e-full
+}
+
+.rs-picker-daterange-panel .rs-picker-toolbar .rs-stack-item .rs-picker-toolbar-ranges .rs-stack-item .rs-btn-link,
+.rs-btn-primary,
+.rs-calendar-table-cell-selected .rs-calendar-table-cell-content{
+  @apply !bg-theme1 text-white no-underline
+}
+
+.rs-picker-daterange-panel .rs-picker-daterange-content {
+  @apply md:flex md:flex-col-reverse
+  /* display: flex;
+  flex-direction: column-reverse; */
+}
+
+.rs-picker-daterange-panel .rs-picker-daterange-content .rs-picker-daterange-header {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rs-picker-daterange-panel .rs-picker-toolbar {
+  /* padding-block: 20px; */
+  @apply py-2.5 md:py-5
+}
+
+.rs-picker-daterange-panel .rs-picker-toolbar .rs-picker-toolbar-right .rs-btn-primary {
+  height: 2.5rem;
+  width: 5rem;
+  position: relative;
+  border-radius: 0.5rem;
+}
+
+.rs-picker-daterange-panel .rs-picker-toolbar .rs-picker-toolbar-right .rs-btn-primary::after {
+  content: 'Submit';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #155EEF;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.rs-picker-daterange-panel .rs-picker-daterange-content .rs-picker-daterange-header .rs-picker-header-date {
+  @apply h-11 w-[8.5rem] border border-theme8 rounded-lg flex items-center justify-center shadow-[0px_1px_2px_0px_#1018280D] text-sm font-normal text-theme14
+}
+
+
+.rs-picker-daterange-panel .rs-picker-toolbar-ranges {
+  display: none !important;
+}
+
+.rs-picker-daterange-calendar-single .rs-calendar-body .rs-calendar-table-cell{
+  @apply size-10
+}
+
+.rs-picker-daterange-calendar-single .rs-calendar-body .rs-calendar-table-cell .rs-calendar-table-cell-content {
+  @apply !size-10 flex items-center justify-center rounded-full
+}
+
+.rs-picker-daterange-calendar-single .rs-calendar{
+  @apply !h-[21.25rem]
+}
+
+.rs-picker-daterange-calendar-single .rs-calendar-table-cell-in-range:before, 
+.rs-picker-daterange-calendar-single .rs-calendar-table-cell-selected:before {
+  @apply !mt-0 !h-10
+}
+
+.rs-picker-daterange-calendar-single .rs-calendar-header-title-date,
+.rs-picker-daterange-calendar-single .rs-calendar-header-month-toolbar .rs-btn-icon .rs-icon{
+  @apply !text-base !font-semibold
+}

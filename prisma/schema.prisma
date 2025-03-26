@@ -1,0 +1,149 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum SocialType {
+  GOOGLE
+}
+
+model User {
+  id             String          @id @default(cuid())
+  name           String?
+  email          String          @unique
+  emailVerified  DateTime?
+  image          String?
+  password       String?
+  socialId       String?         @unique
+  socialIdType   SocialType?
+  role           Role            @default(USER)
+  accounts       Account[]
+  sessions       Session[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  companyDetails CompanyDetail[] @relation("UserCompanyDetails")
+}
+
+model Otp {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  otp       String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+}
+
+model Plan {
+  id                 String   @id @default(cuid())
+  planName           String
+  popular            Boolean  @default(false) //enable plan popularity by true
+  discount           Int      @default(0) // Assuming prices are whole numbers
+  monthlyPrice       Int      @default(0) // Assuming prices are whole numbers
+  yearlyPrice        Int      @default(0) // Same here for yearly price
+  userAccessLimit    String? // Assuming access limits for users
+  websiteAccessLimit String? // Same for website access
+  conversions        Boolean  @default(false) // Default to false if no conversion feature is enabled
+  addons             Json? // If addons are a list or a complex structure, using `Json` would be flexible
+  imageUrl           String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+enum CompanyType {
+  ADVERTISER
+  AGENCY
+  OTHER
+}
+
+model Company {
+  id          String      @id @default(cuid())
+  companyName String
+  companyType CompanyType
+  companySize String
+  addedBy     String
+  companyTnc  Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  companyDetails CompanyDetail[]
+}
+
+model CompanyDetail {
+  id                 String   @id @default(cuid())
+  companyId          String
+  companyWebsite     String
+  companyWebsiteName String
+  countryId          String?
+  currency           String?
+  timezone           String?
+  analyticStatus     String?
+  marketingStatus    String?
+  extendedUrl        String[]
+  addedBy            String
+  cookiePolicy       Boolean  @default(false)
+  knowledgeConsent   Boolean  @default(false)
+  trackingCode       String   @unique
+
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation("UserCompanyDetails", fields: [addedBy], references: [id], onDelete: Cascade)
+
+  @@index([companyId])
+}

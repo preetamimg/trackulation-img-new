@@ -1,0 +1,1 @@
+export const AUTH_TOKEN = 'TRACKULATION_AUTH_TOKEN'
